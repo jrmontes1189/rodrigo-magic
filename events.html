@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Event — Rodrigo Montes Magic</title>
+  <meta name="description" content="Book Rodrigo Montes for your private party, corporate event, wedding or show in Los Angeles and across the USA." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">Rodrigo Montes <span>Magic</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
+    <li><a href="shop.html">Magic Shop</a></li>
+    <li><a href="learn.html">Learn Magic</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="events.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div style="display:flex;gap:1rem;align-items:center;">
+    <div class="nav-cart" title="Cart">🛒<span class="cart-badge" style="display:none;">0</span></div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══════ PAGE HERO ══════ -->
+<div class="page-hero">
+  <div class="page-hero-bg">
+    <img src="images/rodrigo-cards-2.jpg" alt="" aria-hidden="true" />
+    <div class="page-hero-bg-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Hire Rodrigo Montes</div>
+    <h1>Extraordinary<br>Events Begin Here</h1>
+    <p>Available for private, corporate, and special events throughout Los Angeles and the United States</p>
+  </div>
+</div>
+
+<!-- ══════ BOOKING SECTION ══════ -->
+<section class="section" id="booking">
+  <div class="section-inner">
+    <div class="booking-grid">
+
+      <!-- Left: Info -->
+      <div class="booking-info reveal">
+        <h2>Choose Your Experience</h2>
+        <p>Every performance is personally designed for your event, your audience, and your vision. No two shows are ever alike.</p>
+
+        <div class="event-types">
+
+          <div class="event-type">
+            <div class="event-type-icon">🥂</div>
+            <div class="event-type-info">
+              <h4>Private Parties</h4>
+              <p>Close-up magic & mentalism for intimate gatherings · From $1,500</p>
+            </div>
+          </div>
+
+          <div class="event-type">
+            <div class="event-type-icon">🏢</div>
+            <div class="event-type-info">
+              <h4>Corporate Events</h4>
+              <p>Stage shows, walkaround, and branded magic · From $3,500</p>
+            </div>
+          </div>
+
+          <div class="event-type">
+            <div class="event-type-icon">💍</div>
+            <div class="event-type-info">
+              <h4>Weddings</h4>
+              <p>Cocktail hour entertainment and stage packages · From $2,500</p>
+            </div>
+          </div>
+
+          <div class="event-type">
+            <div class="event-type-icon">🏛️</div>
+            <div class="event-type-info">
+              <h4>Trade Shows</h4>
+              <p>Draw crowds and generate leads with magic · Custom Pricing</p>
+            </div>
+          </div>
+
+          <div class="event-type">
+            <div class="event-type-icon">🖥️</div>
+            <div class="event-type-info">
+              <h4>Virtual Shows</h4>
+              <p>Interactive Zoom magic for remote teams · From $750</p>
+            </div>
+          </div>
+
+          <div class="event-type">
+            <div class="event-type-icon">🎭</div>
+            <div class="event-type-info">
+              <h4>Stage Illusions</h4>
+              <p>Grand illusions for theaters and large venues · Custom Pricing</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:2rem;padding:1.5rem;border:1px solid var(--border);background:var(--bg-card);">
+          <div style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.2em;color:var(--gold);margin-bottom:0.8rem;">AVAILABILITY</div>
+          <p style="color:var(--text-secondary);font-size:0.92rem;margin:0;">Currently booking events in <strong style="color:var(--gold-light);">Los Angeles</strong>, all of California, and nationwide. Typical lead time is 3–6 weeks for scheduling.</p>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal reveal-delay-2">
+        <form class="booking-form" novalidate>
+          <div class="form-title">✦ Request a Booking</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" placeholder="Your first name" required />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" placeholder="Your last name" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" placeholder="(310) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="event-type">Event Type</label>
+            <select id="event-type" required>
+              <option value="" disabled selected>Select event type</option>
+              <option value="private">Private Party</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="wedding">Wedding</option>
+              <option value="trade">Trade Show</option>
+              <option value="virtual">Virtual Show</option>
+              <option value="stage">Stage Production</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="event-date">Event Date</label>
+              <input type="date" id="event-date" required />
+            </div>
+            <div class="form-group">
+              <label for="event-time">Preferred Time</label>
+              <input type="time" id="event-time" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="location">Event Location / City</label>
+              <input type="text" id="location" placeholder="Los Angeles, CA" required />
+            </div>
+            <div class="form-group">
+              <label for="guests">Expected Guests</label>
+              <select id="guests">
+                <option value="" disabled selected>Number of guests</option>
+                <option value="1-25">1 – 25</option>
+                <option value="26-50">26 – 50</option>
+                <option value="51-100">51 – 100</option>
+                <option value="101-250">101 – 250</option>
+                <option value="251-500">251 – 500</option>
+                <option value="500+">500+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget">
+              <option value="" disabled selected>Select budget range</option>
+              <option value="750-1500">$750 – $1,500</option>
+              <option value="1500-3000">$1,500 – $3,000</option>
+              <option value="3000-6000">$3,000 – $6,000</option>
+              <option value="6000-10000">$6,000 – $10,000</option>
+              <option value="10000+">$10,000+</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell Me About Your Event</label>
+            <textarea id="message" placeholder="Describe your event, any special requests, theme, or vision you have in mind..." rows="5"></textarea>
+          </div>
+
+          <div class="form-group" style="display:flex;align-items:flex-start;gap:0.8rem;">
+            <input type="checkbox" id="agree" required style="width:auto;margin-top:0.3rem;" />
+            <label for="agree" style="font-size:0.82rem;text-transform:none;letter-spacing:0;cursor:pointer;">
+              I agree to be contacted by Rodrigo Montes Magic regarding this booking inquiry.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.85rem;">
+            ✦ &nbsp;Submit Booking Request
+          </button>
+
+          <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:1rem;font-style:italic;">
+            Typically responds within 24 hours
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WHAT TO EXPECT ══════ -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <h2 class="section-title reveal">The Experience</h2>
+    <div class="gold-ornament reveal"><span>✦ ✦ ✦</span></div>
+    <p class="section-subtitle reveal">What happens when you book Rodrigo Montes</p>
+
+    <div class="services-grid" style="max-width:960px;margin:0 auto;">
+
+      <div class="service-card reveal" style="text-align:center;">
+        <div class="service-icon">📩</div>
+        <h3>1. Inquiry</h3>
+        <p>Submit your request. I personally review every booking and respond within 24 hours with availability and pricing details.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1" style="text-align:center;">
+        <div class="service-icon">🤝</div>
+        <h3>2. Consultation</h3>
+        <p>We schedule a call to discuss your vision, audience, and goals. Every performance is crafted specifically for your event.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2" style="text-align:center;">
+        <div class="service-icon">📋</div>
+        <h3>3. Proposal</h3>
+        <p>You receive a detailed performance proposal with timeline, requirements, and a clear contract with no hidden fees.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3" style="text-align:center;">
+        <div class="service-icon">✨</div>
+        <h3>4. The Magic</h3>
+        <p>The evening arrives. I handle everything. Your guests experience something they will speak about for years to come.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FAQ ══════ -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Frequently Asked Questions</h2>
+    <div class="gold-ornament reveal"><span>♠ ♣</span></div>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How far in advance should I book?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>For most events I recommend booking at least 3–6 weeks in advance. Peak seasons (holidays, spring/summer) fill up quickly, so earlier is always better. That said, I do accommodate last-minute requests when my calendar allows.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Do you travel outside Los Angeles?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely. While Los Angeles is my home base, I perform throughout California and take national engagements regularly. Travel fees may apply for events outside the greater LA area. International bookings are also considered for the right opportunity.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What is included in a typical performance?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Each booking is tailored to your event. A typical corporate show includes pre-show consultation, a 45–60 minute stage performance, walkaround mingling entertainment, and professional setup/breakdown. Private party packages focus on close-up magic and mentalism.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What are your technical requirements?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Requirements vary by show type. Close-up and parlor shows need minimal setup. Stage productions may require a stage space, basic lighting, and sound. I provide a detailed technical rider upon booking confirmation and work flexibly with your venue.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Is a deposit required to secure a booking?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, a 30% deposit is required to reserve your date, with the balance due two weeks prior to the event. I accept all major credit cards, bank transfer, and PayPal. All bookings include a written contract for your protection.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Do you perform for children's parties?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>My primary focus is adult and all-ages audiences for corporate, private, and wedding events. I do offer select family-friendly shows — please mention this in your inquiry and I'll advise on the best format for your audience mix.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ TESTIMONIALS ══════ -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Client Experiences</h2>
+    <div class="gold-ornament reveal"><span>♥ ✦ ♥</span></div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">He performed at our annual gala and completely stole the night. Every single person in the room was left with their jaw on the floor. We are already planning our next event around his availability.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AL</div>
+          <div>
+            <div class="author-name">Amanda Larson</div>
+            <div class="author-role">Director of Events, Pacific Ventures</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">The virtual show for our 200-person remote team was extraordinary. People were genuinely baffled — through a screen! He managed to create real human connection in a virtual format. Remarkable.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MK</div>
+          <div>
+            <div class="author-name">Michael Kim</div>
+            <div class="author-role">Head of Culture, TechForward Inc.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Booked for our product launch in Century City. He wove our brand messaging into the magic seamlessly. Our clients were blown away and we generated massive buzz on social media. 10/10.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">TR</div>
+          <div>
+            <div class="author-name">Tara Reyes</div>
+            <div class="author-role">Marketing Director, Lux Brand Agency</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">Rodrigo Montes <span>Magic</span></a>
+        <p>World-class magic and illusion for private events, corporate shows, weddings, and more. Based in Los Angeles, available nationwide.</p>
+        <div class="social-links">
+          <a class="social-link" href="#">📸</a>
+          <a class="social-link" href="#">▶</a>
+          <a class="social-link" href="#">📘</a>
+          <a class="social-link" href="#">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="events.html">Private Events</a></li>
+          <li><a href="events.html">Corporate Shows</a></li>
+          <li><a href="events.html">Weddings</a></li>
+          <li><a href="events.html">Virtual Shows</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>The Store</h4>
+        <ul>
+          <li><a href="shop.html">Magic Shop</a></li>
+          <li><a href="learn.html">Learn Magic</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Rodrigo Montes Magic. Los Angeles, California.</div>
+      <div style="color:var(--text-muted);font-size:0.8rem;">♠ ♥ ♦ ♣</div>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-overlay"></div>
+<div class="cart-sidebar">
+  <div class="cart-header"><h3>Your Cart</h3><button class="cart-close">✕</button></div>
+  <div class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span class="cart-total-price">$0.00</span></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;">Proceed to Checkout</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

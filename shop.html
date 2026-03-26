@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magic Shop — Rodrigo Montes Magic</title>
+  <meta name="description" content="Professional magic supplies, playing cards, coin magic, mentalism props, and stage illusions. Curated selection for all skill levels." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .shop-hero-banner {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+      border-bottom: 1px solid var(--border);
+      padding: 9rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .shop-search {
+      max-width: 480px;
+      margin: 2rem auto 0;
+      position: relative;
+    }
+
+    .shop-search input {
+      width: 100%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.9rem 3rem 0.9rem 1.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .shop-search input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,165,90,0.1);
+    }
+
+    .shop-search input::placeholder { color: var(--text-muted); }
+
+    .shop-search-icon {
+      position: absolute;
+      right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .sort-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .results-count {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+
+    .sort-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .sort-select option { background: var(--bg-secondary); }
+
+    .product-badge {
+      position: absolute;
+      top: 0.8rem; right: 0.8rem;
+      padding: 3px 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .badge-new { background: rgba(201,165,90,0.2); color: var(--gold-light); border: 1px solid var(--border); }
+    .badge-hot { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+    .badge-sale { background: rgba(34,197,94,0.2); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+
+    .product-original-price {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-right: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">Rodrigo Montes <span>Magic</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="shop.html" class="active">Magic Shop</a></li>
+    <li><a href="learn.html">Learn Magic</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="events.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div style="display:flex;gap:1rem;align-items:center;">
+    <div class="nav-cart" title="Cart">🛒<span class="cart-badge" style="display:none;">0</span></div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══════ SHOP HERO ══════ -->
+<div class="shop-hero-banner" style="position:relative;overflow:hidden;"><div style="position:absolute;inset:0;"><img src="images/rodrigo-portrait.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.12) saturate(0.2) contrast(1.3);"/></div><div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);"></div><div style="position:relative;z-index:2;">
+  <div class="page-hero-eyebrow">Professional Magic Supplies</div>
+  <h1 style="font-size:clamp(2rem,5vw,3.2rem);">The Magic Shop</h1>
+  <p style="color:var(--text-secondary);font-style:italic;max-width:550px;margin:0.8rem auto 0;">
+    Curated selection of professional-grade magic for every skill level — cards, coins, mentalism, stage, and more.
+  </p>
+  <div class="shop-search">
+    <input type="text" id="shop-search-input" placeholder="Search magic products..." />
+    <div class="shop-search-icon">🔍</div>
+  </div>
+</div></div>
+
+<!-- ══════ SHOP MAIN ══════ -->
+<section class="section">
+  <div class="section-inner">
+
+    <div class="shop-filters">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="cards">Cards &amp; Decks</button>
+      <button class="filter-btn" data-filter="coins">Coins &amp; Money</button>
+      <button class="filter-btn" data-filter="mentalism">Mentalism</button>
+      <button class="filter-btn" data-filter="close-up">Close-Up</button>
+      <button class="filter-btn" data-filter="stage">Stage &amp; Parlor</button>
+      <button class="filter-btn" data-filter="books">Books &amp; DVDs</button>
+      <button class="filter-btn" data-filter="silk">Silk &amp; Scarves</button>
+      <button class="filter-btn" data-filter="rope">Rope Magic</button>
+    </div>
+
+    <div class="sort-row">
+      <div class="results-count" id="results-count">Showing all products</div>
+      <select class="sort-select" id="sort-select">
+        <option value="default">Sort: Featured</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </div>
+
+    <div class="products-grid" id="products-grid">
+
+      <!-- ── CARDS ── -->
+      <div class="product-card reveal" data-category="cards" data-price="12.95" data-name="Monarch Playing Cards">
+        <div class="product-image">
+          <div class="product-emoji">🃏</div>
+          <span class="product-badge badge-hot">Best Seller</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p01','Monarch Playing Cards','12.95','🃏')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Cards &amp; Decks</div>
+          <div class="product-name">Monarch Playing Cards</div>
+          <div class="product-level">All Levels · Theory11</div>
+          <div class="product-footer">
+            <div class="product-price">$12.95</div>
+            <button class="add-to-cart" onclick="addToCart('p01','Monarch Playing Cards','12.95','🃏')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="cards" data-price="14.95" data-name="Ghost Deck">
+        <div class="product-image">
+          <div class="product-emoji">👻</div>
+          <span class="product-badge badge-new">New</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p02','Ghost Deck','14.95','👻')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Cards &amp; Decks</div>
+          <div class="product-name">Ghost Deck</div>
+          <div class="product-level">All Levels</div>
+          <div class="product-footer">
+            <div class="product-price">$14.95</div>
+            <button class="add-to-cart" onclick="addToCart('p02','Ghost Deck','14.95','👻')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-2" data-category="cards" data-price="9.99" data-name="Marked Bicycle Deck">
+        <div class="product-image">
+          <div class="product-emoji">🔍</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p03','Marked Bicycle Deck','9.99','🔍')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Cards &amp; Decks</div>
+          <div class="product-name">Marked Bicycle Deck</div>
+          <div class="product-level">Beginner · USPCC</div>
+          <div class="product-footer">
+            <div class="product-price">$9.99</div>
+            <button class="add-to-cart" onclick="addToCart('p03','Marked Bicycle Deck','9.99','🔍')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-category="cards" data-price="29.95" data-name="Invisible Card Deck System">
+        <div class="product-image">
+          <div class="product-emoji">✨</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p04','Invisible Card Deck System','29.95','✨')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Cards &amp; Decks</div>
+          <div class="product-name">Invisible Card Deck System</div>
+          <div class="product-level">Intermediate</div>
+          <div class="product-footer">
+            <div class="product-price">$29.95</div>
+            <button class="add-to-cart" onclick="addToCart('p04','Invisible Card Deck System','29.95','✨')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="cards" data-price="8.99" data-name="Phoenix Deck">
+        <div class="product-image">
+          <div class="product-emoji">🔥</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p05','Phoenix Deck','8.99','🔥')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Cards &amp; Decks</div>
+          <div class="product-name">Phoenix Deck</div>
+          <div class="product-level">All Levels · Card-Shark</div>
+          <div class="product-footer">
+            <div class="product-price">$8.99</div>
+            <button class="add-to-cart" onclick="addToCart('p05','Phoenix Deck','8.99','🔥')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── COINS ── -->
+      <div class="product-card reveal" data-category="coins" data-price="19.95" data-name="Scotch & Soda">
+        <div class="product-image">
+          <div class="product-emoji">🪙</div>
+          <span class="product-badge badge-hot">Popular</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p06','Scotch & Soda','19.95','🪙')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Coins &amp; Money</div>
+          <div class="product-name">Scotch &amp; Soda</div>
+          <div class="product-level">Beginner</div>
+          <div class="product-footer">
+            <div class="product-price">$19.95</div>
+            <button class="add-to-cart" onclick="addToCart('p06','Scotch & Soda','19.95','🪙')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="coins" data-price="24.95" data-name="Half Dollar Coin Set">
+        <div class="product-image">
+          <div class="product-emoji">💰</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p07','Half Dollar Coin Set','24.95','💰')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Coins &amp; Money</div>
+          <div class="product-name">Half Dollar Coin Set</div>
+          <div class="product-level">Intermediate</div>
+          <div class="product-footer">
+            <div class="product-price">$24.95</div>
+            <button class="add-to-cart" onclick="addToCart('p07','Half Dollar Coin Set','24.95','💰')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-2" data-category="coins" data-price="16.95" data-name="Copper/Silver Coin">
+        <div class="product-image">
+          <div class="product-emoji">⚙️</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p08','Copper/Silver Coin','16.95','⚙️')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Coins &amp; Money</div>
+          <div class="product-name">Copper / Silver Coin</div>
+          <div class="product-level">Beginner</div>
+          <div class="product-footer">
+            <div class="product-price">$16.95</div>
+            <button class="add-to-cart" onclick="addToCart('p08','Copper/Silver Coin','16.95','⚙️')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-category="coins" data-price="22.95" data-name="Chinese Coins Set">
+        <div class="product-image">
+          <div class="product-emoji">🏮</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p09','Chinese Coins Set','22.95','🏮')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Coins &amp; Money</div>
+          <div class="product-name">Chinese Coins Set</div>
+          <div class="product-level">Beginner · Set of 4</div>
+          <div class="product-footer">
+            <div class="product-price">$22.95</div>
+            <button class="add-to-cart" onclick="addToCart('p09','Chinese Coins Set','22.95','🏮')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MENTALISM ── -->
+      <div class="product-card reveal" data-category="mentalism" data-price="39.95" data-name="Thought of Card Revelation">
+        <div class="product-image">
+          <div class="product-emoji">🔮</div>
+          <span class="product-badge badge-hot">Top Rated</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p10','Thought of Card Revelation','39.95','🔮')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Mentalism</div>
+          <div class="product-name">Thought of Card Revelation</div>
+          <div class="product-level">Intermediate</div>
+          <div class="product-footer">
+            <div class="product-price">$39.95</div>
+            <button class="add-to-cart" onclick="addToCart('p10','Thought of Card Revelation','39.95','🔮')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="mentalism" data-price="49.95" data-name="Peak Performance">
+        <div class="product-image">
+          <div class="product-emoji">🧠</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p11','Peak Performance','49.95','🧠')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Mentalism</div>
+          <div class="product-name">Peak Performance</div>
+          <div class="product-level">Advanced</div>
+          <div class="product-footer">
+            <div class="product-price">$49.95</div>
+            <button class="add-to-cart" onclick="addToCart('p11','Peak Performance','49.95','🧠')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-2" data-category="mentalism" data-price="14.95" data-name="Nail Writer Pro">
+        <div class="product-image">
+          <div class="product-emoji">✍️</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p12','Nail Writer Pro','14.95','✍️')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Mentalism</div>
+          <div class="product-name">Nail Writer Pro</div>
+          <div class="product-level">All Levels</div>
+          <div class="product-footer">
+            <div class="product-price">$14.95</div>
+            <button class="add-to-cart" onclick="addToCart('p12','Nail Writer Pro','14.95','✍️')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-category="mentalism" data-price="22.95" data-name="Impression Pad">
+        <div class="product-image">
+          <div class="product-emoji">📋</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p13','Impression Pad','22.95','📋')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Mentalism</div>
+          <div class="product-name">Impression Pad</div>
+          <div class="product-level">Beginner</div>
+          <div class="product-footer">
+            <div class="product-price">$22.95</div>
+            <button class="add-to-cart" onclick="addToCart('p13','Impression Pad','22.95','📋')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="mentalism" data-price="34.95" data-name="Watch Prediction System">
+        <div class="product-image">
+          <div class="product-emoji">⌚</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p14','Watch Prediction System','34.95','⌚')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Mentalism</div>
+          <div class="product-name">Watch Prediction System</div>
+          <div class="product-level">Intermediate</div>
+          <div class="product-footer">
+            <div class="product-price">$34.95</div>
+            <button class="add-to-cart" onclick="addToCart('p14','Watch Prediction System','34.95','⌚')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CLOSE-UP ── -->
+      <div class="product-card reveal" data-category="close-up" data-price="12.95" data-name="Sponge Ball Set">
+        <div class="product-image">
+          <div class="product-emoji">🔴</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p15','Sponge Ball Set','12.95','🔴')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Close-Up Magic</div>
+          <div class="product-name">Sponge Ball Set</div>
+          <div class="product-level">Beginner · Set of 4</div>
+          <div class="product-footer">
+            <div class="product-price">$12.95</div>
+            <button class="add-to-cart" onclick="addToCart('p15','Sponge Ball Set','12.95','🔴')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="close-up" data-price="34.95" data-name="Cups and Balls Chrome Set">
+        <div class="product-image">
+          <div class="product-emoji">🏆</div>
+          <span class="product-badge badge-hot">Classic</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p16','Cups and Balls Chrome','34.95','🏆')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Close-Up Magic</div>
+          <div class="product-name">Cups &amp; Balls Chrome Set</div>
+          <div class="product-level">Intermediate</div>
+          <div class="product-footer">
+            <div class="product-price">$34.95</div>
+            <button class="add-to-cart" onclick="addToCart('p16','Cups and Balls Chrome','34.95','🏆')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-2" data-category="close-up" data-price="89.95" data-name="Street Magic Kit Pro">
+        <div class="product-image">
+          <div class="product-emoji">🎪</div>
+          <span class="product-badge badge-new">New</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p17','Street Magic Kit Pro','89.95','🎪')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Close-Up Magic</div>
+          <div class="product-name">Street Magic Kit Pro</div>
+          <div class="product-level">All Levels · 20+ effects</div>
+          <div class="product-footer">
+            <div class="product-price">$89.95</div>
+            <button class="add-to-cart" onclick="addToCart('p17','Street Magic Kit Pro','89.95','🎪')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAGE ── -->
+      <div class="product-card reveal" data-category="stage" data-price="29.95" data-name="Fire Wallet">
+        <div class="product-image">
+          <div class="product-emoji">🔥</div>
+          <span class="product-badge badge-hot">Hot</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p18','Fire Wallet','29.95','🔥')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Stage &amp; Parlor</div>
+          <div class="product-name">Fire Wallet</div>
+          <div class="product-level">Intermediate</div>
+          <div class="product-footer">
+            <div class="product-price">$29.95</div>
+            <button class="add-to-cart" onclick="addToCart('p18','Fire Wallet','29.95','🔥')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="stage" data-price="54.95" data-name="Appearing Cane Metal">
+        <div class="product-image">
+          <div class="product-emoji">🪄</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p19','Appearing Cane Metal','54.95','🪄')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Stage &amp; Parlor</div>
+          <div class="product-name">Appearing Cane (Metal)</div>
+          <div class="product-level">Intermediate</div>
+          <div class="product-footer">
+            <div class="product-price">$54.95</div>
+            <button class="add-to-cart" onclick="addToCart('p19','Appearing Cane Metal','54.95','🪄')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-2" data-category="stage" data-price="89.95" data-name="Dove Pan">
+        <div class="product-image">
+          <div class="product-emoji">🕊️</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p20','Dove Pan','89.95','🕊️')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Stage &amp; Parlor</div>
+          <div class="product-name">Dove Pan</div>
+          <div class="product-level">Intermediate · Chrome</div>
+          <div class="product-footer">
+            <div class="product-price">$89.95</div>
+            <button class="add-to-cart" onclick="addToCart('p20','Dove Pan','89.95','🕊️')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-category="stage" data-price="149.95" data-name="Floating Ball Illusion">
+        <div class="product-image">
+          <div class="product-emoji">⚽</div>
+          <span class="product-badge badge-new">Premium</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p21','Floating Ball Illusion','149.95','⚽')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Stage &amp; Parlor</div>
+          <div class="product-name">Floating Ball Illusion</div>
+          <div class="product-level">Advanced</div>
+          <div class="product-footer">
+            <div class="product-price">$149.95</div>
+            <button class="add-to-cart" onclick="addToCart('p21','Floating Ball Illusion','149.95','⚽')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="stage" data-price="44.95" data-name="Linking Rings Chrome">
+        <div class="product-image">
+          <div class="product-emoji">⭕</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p22','Linking Rings Chrome','44.95','⭕')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Stage &amp; Parlor</div>
+          <div class="product-name">Linking Rings (Chrome · 8-Ring)</div>
+          <div class="product-level">Intermediate</div>
+          <div class="product-footer">
+            <div class="product-price">$44.95</div>
+            <button class="add-to-cart" onclick="addToCart('p22','Linking Rings Chrome','44.95','⭕')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BOOKS ── -->
+      <div class="product-card reveal" data-category="books" data-price="24.95" data-name="Expert at the Card Table">
+        <div class="product-image">
+          <div class="product-emoji">📖</div>
+          <span class="product-badge badge-hot">Classic</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p23','Expert at the Card Table','24.95','📖')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Books &amp; DVDs</div>
+          <div class="product-name">Expert at the Card Table</div>
+          <div class="product-level">All Levels · S.W. Erdnase</div>
+          <div class="product-footer">
+            <div class="product-price">$24.95</div>
+            <button class="add-to-cart" onclick="addToCart('p23','Expert at the Card Table','24.95','📖')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="books" data-price="19.95" data-name="Royal Road to Card Magic">
+        <div class="product-image">
+          <div class="product-emoji">👑</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p24','Royal Road to Card Magic','19.95','👑')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Books &amp; DVDs</div>
+          <div class="product-name">Royal Road to Card Magic</div>
+          <div class="product-level">Beginner · Jean Hugard</div>
+          <div class="product-footer">
+            <div class="product-price">$19.95</div>
+            <button class="add-to-cart" onclick="addToCart('p24','Royal Road to Card Magic','19.95','👑')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-2" data-category="books" data-price="22.95" data-name="Modern Coin Magic">
+        <div class="product-image">
+          <div class="product-emoji">📚</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p25','Modern Coin Magic','22.95','📚')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Books &amp; DVDs</div>
+          <div class="product-name">Modern Coin Magic</div>
+          <div class="product-level">All Levels · J.B. Bobo</div>
+          <div class="product-footer">
+            <div class="product-price">$22.95</div>
+            <button class="add-to-cart" onclick="addToCart('p25','Modern Coin Magic','22.95','📚')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SILK ── -->
+      <div class="product-card reveal" data-category="silk" data-price="18.95" data-name="Silk Set Assorted">
+        <div class="product-image">
+          <div class="product-emoji">🌸</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p26','Silk Set Assorted','18.95','🌸')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Silk &amp; Scarves</div>
+          <div class="product-name">Silk Set Assorted</div>
+          <div class="product-level">All Levels · 12 silks</div>
+          <div class="product-footer">
+            <div class="product-price">$18.95</div>
+            <button class="add-to-cart" onclick="addToCart('p26','Silk Set Assorted','18.95','🌸')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="silk" data-price="34.95" data-name="Silk Production Streamer">
+        <div class="product-image">
+          <div class="product-emoji">🎀</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p27','Silk Production Streamer','34.95','🎀')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Silk &amp; Scarves</div>
+          <div class="product-name">Silk Production Streamer</div>
+          <div class="product-level">Intermediate · 20ft</div>
+          <div class="product-footer">
+            <div class="product-price">$34.95</div>
+            <button class="add-to-cart" onclick="addToCart('p27','Silk Production Streamer','34.95','🎀')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ROPE ── -->
+      <div class="product-card reveal" data-category="rope" data-price="9.95" data-name="Magic Rope 6ft">
+        <div class="product-image">
+          <div class="product-emoji">🪢</div>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p28','Magic Rope 6ft','9.95','🪢')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Rope Magic</div>
+          <div class="product-name">Magic Rope (6ft)</div>
+          <div class="product-level">All Levels · Cotton</div>
+          <div class="product-footer">
+            <div class="product-price">$9.95</div>
+            <button class="add-to-cart" onclick="addToCart('p28','Magic Rope 6ft','9.95','🪢')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-category="rope" data-price="27.95" data-name="Cut and Restored Rope Gimmick">
+        <div class="product-image">
+          <div class="product-emoji">✂️</div>
+          <span class="product-badge badge-sale">Save 20%</span>
+          <div class="product-overlay">
+            <button class="btn btn-primary" onclick="addToCart('p29','Cut & Restored Rope Gimmick','27.95','✂️')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Rope Magic</div>
+          <div class="product-name">Cut &amp; Restored Rope Gimmick</div>
+          <div class="product-level">Beginner · Self-Working</div>
+          <div class="product-footer">
+            <span class="product-original-price">$34.95</span>
+            <div class="product-price">$27.95</div>
+            <button class="add-to-cart" onclick="addToCart('p29','Cut & Restored Rope Gimmick','27.95','✂️')">+ Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /products-grid -->
+
+  </div>
+</section>
+
+<!-- ══════ AFFILIATE NOTICE ══════ -->
+<div style="background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--gold);margin-bottom:0.5rem;">EXPANDED CATALOG</div>
+    <p style="color:var(--text-secondary);font-size:0.92rem;">
+      Looking for an even wider selection? Browse thousands more professional magic items at our partner store
+      — the world's largest magic retailer.
+    </p>
+    <a href="https://www.penguinmagic.com/" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:1rem;display:inline-flex;">
+      Visit Penguin Magic →
+    </a>
+  </div>
+</div>
+
+<!-- ══════ CTA ══════ -->
+<section class="cta-banner">
+  <div class="section-inner">
+    <h2 class="reveal">Questions About Any Product?</h2>
+    <p class="reveal">I personally recommend the right props for your skill level and performance goals.</p>
+    <a href="contact.html" class="btn btn-primary reveal">Get a Recommendation ✦</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">Rodrigo Montes <span>Magic</span></a>
+        <p>Professional magic supplies and performance services from a working LA magician.</p>
+        <div class="social-links">
+          <a class="social-link" href="#">📸</a>
+          <a class="social-link" href="#">▶</a>
+          <a class="social-link" href="#">📘</a>
+          <a class="social-link" href="#">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">Cards &amp; Decks</a></li>
+          <li><a href="shop.html">Coins &amp; Money</a></li>
+          <li><a href="shop.html">Mentalism</a></li>
+          <li><a href="shop.html">Stage &amp; Parlor</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="learn.html">All Courses</a></li>
+          <li><a href="learn.html">Beginner</a></li>
+          <li><a href="learn.html">Advanced</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="events.html">Book an Event</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Shipping &amp; Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Rodrigo Montes Magic. Los Angeles, California.</div>
+      <div style="color:var(--text-muted);font-size:0.8rem;">♠ ♥ ♦ ♣</div>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-overlay"></div>
+<div class="cart-sidebar">
+  <div class="cart-header"><h3>Your Cart</h3><button class="cart-close">✕</button></div>
+  <div class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span class="cart-total-price">$0.00</span></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;">Proceed to Checkout</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  // Shop search filter
+  document.getElementById('shop-search-input').addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    const cards = document.querySelectorAll('.product-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const name = card.dataset.name?.toLowerCase() || '';
+      const cat = card.dataset.category?.toLowerCase() || '';
+      if (!q || name.includes(q) || cat.includes(q)) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    document.getElementById('results-count').textContent = q
+      ? `Showing ${visible} result${visible !== 1 ? 's' : ''} for "${this.value}"`
+      : 'Showing all products';
+  });
+</script>
+</body>
+</html>

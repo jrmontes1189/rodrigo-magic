@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Rodrigo Montes Magic</title>
+  <meta name="description" content="Contact Rodrigo Montes for bookings, product inquiries, or press. Based in Los Angeles, California." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">Rodrigo Montes <span>Magic</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="shop.html">Magic Shop</a></li>
+    <li><a href="learn.html">Learn Magic</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="events.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div style="display:flex;gap:1rem;align-items:center;">
+    <div class="nav-cart" title="Cart">🛒<span class="cart-badge" style="display:none;">0</span></div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══════ PAGE HERO ══════ -->
+<div class="page-hero">
+  <div class="page-hero-bg">
+    <img src="images/rodrigo-portrait.jpg" alt="" aria-hidden="true" />
+    <div class="page-hero-bg-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Get in Touch</div>
+    <h1>Contact<br>Rodrigo Montes</h1>
+    <p>For bookings, product inquiries, press, or general questions — I personally read every message.</p>
+  </div>
+</div>
+
+<!-- ══════ CONTACT MAIN ══════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <!-- Left: Contact Info -->
+      <div class="contact-info reveal">
+        <h2>Let's Connect</h2>
+        <p>
+          Whether you're planning an event, curious about a product, or just want to talk magic — reach out. I respond personally to every inquiry, typically within 24 hours.
+        </p>
+
+        <div class="contact-items">
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <a class="contact-item-text" href="#">Los Angeles, California</a>
+              <div class="contact-item-label">Available nationwide</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div>
+              <a class="contact-item-text" href="mailto:hello@themystician.com">hello@themystician.com</a>
+              <div class="contact-item-label">For all inquiries</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <a class="contact-item-text" href="tel:+13100000000">(310) 000-0000</a>
+              <div class="contact-item-label">Mon–Fri, 10am–7pm PT</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">🎭</div>
+            <div>
+              <a class="contact-item-text" href="events.html">Book an Event →</a>
+              <div class="contact-item-label">Full booking form with details</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:2.5rem;">
+          <div style="font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);margin-bottom:1rem;">FOLLOW THE MAGIC</div>
+          <div class="social-links">
+            <a class="social-link" href="#" title="Instagram">📸</a>
+            <a class="social-link" href="#" title="YouTube">▶</a>
+            <a class="social-link" href="#" title="Facebook">📘</a>
+            <a class="social-link" href="#" title="TikTok">🎵</a>
+            <a class="social-link" href="#" title="X/Twitter">🐦</a>
+          </div>
+        </div>
+
+        <!-- Response time callout -->
+        <div style="margin-top:2.5rem;padding:1.5rem;border:1px solid var(--border);background:var(--bg-card);">
+          <div style="font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);margin-bottom:0.6rem;">TYPICAL RESPONSE TIMES</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <div style="display:flex;justify-content:space-between;font-size:0.88rem;">
+              <span style="color:var(--text-secondary);">Event bookings</span>
+              <span style="color:var(--gold-light);font-family:'Cinzel',serif;font-size:0.8rem;">Within 24 hours</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.88rem;">
+              <span style="color:var(--text-secondary);">Shop &amp; product questions</span>
+              <span style="color:var(--gold-light);font-family:'Cinzel',serif;font-size:0.8rem;">Within 48 hours</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.88rem;">
+              <span style="color:var(--text-secondary);">Press &amp; media</span>
+              <span style="color:var(--gold-light);font-family:'Cinzel',serif;font-size:0.8rem;">Within 24–48 hours</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal reveal-delay-2">
+        <form class="contact-form" novalidate>
+          <div class="form-title">✦ Send a Message</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Your Name</label>
+              <input type="text" id="c-name" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email Address</label>
+              <input type="email" id="c-email" placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="c-subject">Subject</label>
+            <select id="c-subject">
+              <option value="" disabled selected>Select a topic</option>
+              <option value="booking">Event Booking Inquiry</option>
+              <option value="product">Product / Shop Question</option>
+              <option value="course">Video Course Question</option>
+              <option value="press">Press / Media</option>
+              <option value="collab">Collaboration</option>
+              <option value="other">General Question</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="c-phone">Phone (optional)</label>
+            <input type="tel" id="c-phone" placeholder="(310) 000-0000" />
+          </div>
+
+          <div class="form-group">
+            <label for="c-message">Your Message</label>
+            <textarea id="c-message" placeholder="How can I help you? Tell me what you have in mind..." rows="7" required></textarea>
+          </div>
+
+          <div class="form-group" style="display:flex;align-items:flex-start;gap:0.8rem;">
+            <input type="checkbox" id="c-agree" required style="width:auto;margin-top:0.3rem;" />
+            <label for="c-agree" style="font-size:0.82rem;text-transform:none;letter-spacing:0;cursor:pointer;">
+              I agree to be contacted in response to this message.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            ✦ &nbsp;Send Message
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PRESS & MEDIA ══════ -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Press &amp; Media</h2>
+    <div class="gold-ornament reveal"><span>✦ ✦ ✦</span></div>
+    <p class="section-subtitle reveal">Available for interviews, features, and media appearances</p>
+
+    <div class="services-grid" style="max-width:900px;margin:0 auto;">
+
+      <div class="service-card reveal" style="text-align:center;">
+        <div class="service-icon">📰</div>
+        <h3>Print &amp; Editorial</h3>
+        <p>Available for magazine features, newspaper profiles, and editorial content on the art of magic and performance.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1" style="text-align:center;">
+        <div class="service-icon">📺</div>
+        <h3>Television &amp; Film</h3>
+        <p>Open to appearances, consulting, and performance opportunities for television shows, films, and digital media.</p>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2" style="text-align:center;">
+        <div class="service-icon">🎙️</div>
+        <h3>Podcasts &amp; Interviews</h3>
+        <p>Happy to discuss the art, psychology, and business of professional magic for podcast episodes and online features.</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+      <a href="mailto:press@themystician.com" class="btn btn-outline">📧 &nbsp;press@themystician.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FAQ ══════ -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Common Questions</h2>
+    <div class="gold-ornament reveal"><span>♠ ♣</span></div>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Where is Rodrigo Montes based, and do you travel?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>I am based in Los Angeles, California and perform regularly throughout Southern California and the greater LA area. I also travel nationally and have performed in New York, Chicago, Miami, Las Vegas, and internationally. Travel fees apply for events outside the greater LA area.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How do I track my shop order?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Once your order ships, you will receive a confirmation email with tracking information. Physical products ship within 2–3 business days. Expedited shipping is available at checkout. For order questions, email orders@themystician.com with your order number.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How do I access my video downloads after purchase?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>After completing your purchase, you will receive an email with a download link within minutes. Downloads are available for 12 months from purchase and can be saved to your devices for permanent offline access. If you have any issues, contact support@themystician.com.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What is your return policy for magic products?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Unopened physical products may be returned within 30 days for a full refund. Due to the nature of magic secrets, opened products and all digital downloads are non-refundable. If an item arrives damaged, we will replace it at no charge — contact us within 7 days of receipt.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Do you offer custom magic lessons or coaching?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>I occasionally offer one-on-one coaching sessions for serious students. Availability is limited. Contact me with details about your experience level and goals, and we'll discuss whether private coaching is the right fit for you.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="section-inner">
+    <h2 class="reveal">Ready to Experience the Magic?</h2>
+    <p class="reveal">Book an event, browse the shop, or start learning today.</p>
+    <div class="reveal" style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+      <a href="events.html" class="btn btn-primary">Book an Event ✦</a>
+      <a href="shop.html" class="btn btn-outline">Explore the Shop →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">Rodrigo Montes <span>Magic</span></a>
+        <p>World-class magic and illusion. Los Angeles, California.</p>
+        <div class="social-links">
+          <a class="social-link" href="#">📸</a>
+          <a class="social-link" href="#">▶</a>
+          <a class="social-link" href="#">📘</a>
+          <a class="social-link" href="#">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="events.html">Book an Event</a></li>
+          <li><a href="events.html">Corporate Shows</a></li>
+          <li><a href="events.html">Weddings</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>The Store</h4>
+        <ul>
+          <li><a href="shop.html">Magic Shop</a></li>
+          <li><a href="learn.html">Learn Magic</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Rodrigo Montes Magic. Los Angeles, California.</div>
+      <div style="color:var(--text-muted);font-size:0.8rem;">♠ ♥ ♦ ♣</div>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-overlay"></div>
+<div class="cart-sidebar">
+  <div class="cart-header"><h3>Your Cart</h3><button class="cart-close">✕</button></div>
+  <div class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span class="cart-total-price">$0.00</span></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;">Proceed to Checkout</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

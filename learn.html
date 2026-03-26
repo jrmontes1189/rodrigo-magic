@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Magic — Rodrigo Montes Magic</title>
+  <meta name="description" content="Buy and download professional magic video tutorials from master illusionist Rodrigo Montes. Beginner to advanced card, coin, mentalism and stage magic courses." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .learn-hero {
+      background: radial-gradient(ellipse at center, rgba(124,58,237,0.12) 0%, transparent 70%),
+                  var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 9rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .course-detail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-top: 5rem;
+    }
+
+    .course-feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      flex: 1;
+      min-width: 220px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .course-feature-card:hover {
+      border-color: var(--border-bright);
+    }
+
+    .course-feature-card .icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .course-feature-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .course-feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+
+    .featured-course {
+      background: var(--bg-card);
+      border: 1px solid var(--border-bright);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 4rem;
+    }
+
+    .featured-course::before {
+      content: 'FEATURED COURSE';
+      position: absolute;
+      top: 1.2rem; right: -2rem;
+      background: var(--gold);
+      color: var(--bg-primary);
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      padding: 4px 3rem;
+      transform: rotate(0deg);
+    }
+
+    .fc-thumb {
+      aspect-ratio: 16/9;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fc-thumb-emoji {
+      font-size: 5rem;
+      opacity: 0.5;
+    }
+
+    .fc-play-btn {
+      position: absolute;
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: rgba(201,165,90,0.15);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-size: 1.6rem;
+      transition: var(--transition);
+    }
+
+    .fc-play-btn:hover {
+      background: var(--gold);
+      color: var(--bg-primary);
+      transform: scale(1.1);
+    }
+
+    .fc-content .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .fc-content h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .fc-content p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .fc-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .fc-features li {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding: 0.4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .fc-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.7rem;
+    }
+
+    .fc-price {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2.5rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .upload-notice {
+      background: var(--bg-card);
+      border: 1px dashed var(--border-bright);
+      padding: 3rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .upload-notice h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .upload-notice p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .featured-course { grid-template-columns: 1fr; }
+      .featured-course::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">Rodrigo Montes <span>Magic</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="shop.html">Magic Shop</a></li>
+    <li><a href="learn.html" class="active">Learn Magic</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="events.html" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div style="display:flex;gap:1rem;align-items:center;">
+    <div class="nav-cart" title="Cart">🛒<span class="cart-badge" style="display:none;">0</span></div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<div class="page-hero">
+  <div class="page-hero-bg">
+    <img src="images/rodrigo-cards-1.jpg" alt="" aria-hidden="true" />
+    <div class="page-hero-bg-overlay"></div>
+  </div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Master-Level Video Tutorials</div>
+    <h1>Learn the<br>Art of Magic</h1>
+    <p>Buy once, download forever. High-definition instructional videos from a professional working magician with 15+ years of experience.</p>
+  </div>
+</div>
+
+<!-- ══════ FEATURES ══════ -->
+<section class="section" style="padding-bottom:2rem;">
+  <div class="section-inner">
+    <div class="course-detail">
+      <div class="course-feature-card reveal">
+        <div class="icon">📺</div>
+        <h4>HD Video Quality</h4>
+        <p>Crystal-clear, multi-angle footage with close-up detail on every technique and sleight.</p>
+      </div>
+      <div class="course-feature-card reveal reveal-delay-1">
+        <div class="icon">⬇️</div>
+        <h4>Instant Download</h4>
+        <p>Purchase and immediately download to any device. Watch offline, anytime, forever.</p>
+      </div>
+      <div class="course-feature-card reveal reveal-delay-2">
+        <div class="icon">🎓</div>
+        <h4>Professional Secrets</h4>
+        <p>Real techniques used in professional performances — not watered-down beginner content.</p>
+      </div>
+      <div class="course-feature-card reveal reveal-delay-3">
+        <div class="icon">♾️</div>
+        <h4>Lifetime Access</h4>
+        <p>Your purchase never expires. Re-watch as many times as you need on any device.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FEATURED COURSE ══════ -->
+<section class="section" style="padding-top:2rem;">
+  <div class="section-inner">
+
+    <div class="featured-course reveal">
+      <div class="fc-thumb">
+        <div class="fc-thumb-emoji">🧠</div>
+        <div class="fc-play-btn">▶</div>
+      </div>
+      <div class="fc-content">
+        <div class="eyebrow">Featured Course</div>
+        <h2>Advanced Mentalism Techniques</h2>
+        <p>The most comprehensive mentalism course available — 5 full hours of professional psychological magic secrets. Learn to read minds, predict choices, and create impossible moments of pure wonder.</p>
+        <ul class="fc-features">
+          <li>Cold reading &amp; hot reading fundamentals</li>
+          <li>Psychological forcing techniques</li>
+          <li>Prediction effects with everyday objects</li>
+          <li>Center tear &amp; billet work</li>
+          <li>Full performance routines with scripting</li>
+          <li>Q&amp;A and remote viewing techniques</li>
+        </ul>
+        <div class="fc-price">$59.99</div>
+        <button class="btn btn-primary" onclick="buyVideo('v04','Advanced Mentalism Techniques','59.99')">
+          ✦ &nbsp;Buy &amp; Download Now
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ ALL COURSES ══════ -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <h2 class="section-title reveal">All Courses</h2>
+    <div class="gold-ornament reveal"><span>✦ ✦ ✦</span></div>
+
+    <!-- Level Filter -->
+    <div class="shop-filters" style="margin-bottom:2.5rem;">
+      <button class="filter-btn video-filter-btn active" data-filter="all">All Levels</button>
+      <button class="filter-btn video-filter-btn" data-filter="beginner">Beginner</button>
+      <button class="filter-btn video-filter-btn" data-filter="intermediate">Intermediate</button>
+      <button class="filter-btn video-filter-btn" data-filter="advanced">Advanced</button>
+    </div>
+
+    <div class="videos-grid">
+
+      <!-- 1 -->
+      <div class="video-card reveal" data-level="beginner">
+        <div class="video-thumbnail">
+          <div class="video-thumb-placeholder" style="font-size:3rem;color:var(--border);">🃏</div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">2h 30m</div>
+          <div class="video-level level-beginner">Beginner</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Fundamentals of Card Magic</div>
+          <div class="video-desc">Master the essential techniques every card magician must know — shuffles, controls, forces, and first professional routines.</div>
+          <div class="video-meta">
+            <span>📹 HD Video</span>
+            <span>⬇️ Instant Download</span>
+            <span>🃏 18 Techniques</span>
+          </div>
+          <div class="video-footer">
+            <div class="video-price">$19.99</div>
+            <button class="btn btn-primary" onclick="buyVideo('v01','Fundamentals of Card Magic','19.99')">Buy &amp; Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="video-card reveal reveal-delay-1" data-level="intermediate">
+        <div class="video-thumbnail">
+          <div class="video-thumb-placeholder" style="font-size:3rem;color:var(--border);">🛣️</div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">4h 15m</div>
+          <div class="video-level level-intermediate">Intermediate</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Street Magic Masterclass</div>
+          <div class="video-desc">The complete guide to performing close-up magic for strangers in real-world environments. Includes 12 field-tested routines.</div>
+          <div class="video-meta">
+            <span>📹 HD Video</span>
+            <span>⬇️ Instant Download</span>
+            <span>✨ 12 Routines</span>
+          </div>
+          <div class="video-footer">
+            <div class="video-price">$39.99</div>
+            <button class="btn btn-primary" onclick="buyVideo('v02','Street Magic Masterclass','39.99')">Buy &amp; Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="video-card reveal reveal-delay-2" data-level="beginner">
+        <div class="video-thumbnail">
+          <div class="video-thumb-placeholder" style="font-size:3rem;color:var(--border);">🪙</div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">1h 45m</div>
+          <div class="video-level level-beginner">Beginner</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Coin Magic Foundations</div>
+          <div class="video-desc">Learn the classical sleights and self-working coin effects that form the backbone of every professional coin worker's repertoire.</div>
+          <div class="video-meta">
+            <span>📹 HD Video</span>
+            <span>⬇️ Instant Download</span>
+            <span>🪙 14 Sleights</span>
+          </div>
+          <div class="video-footer">
+            <div class="video-price">$24.99</div>
+            <button class="btn btn-primary" onclick="buyVideo('v03','Coin Magic Foundations','24.99')">Buy &amp; Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 (featured — also in grid) -->
+      <div class="video-card reveal" data-level="advanced">
+        <div class="video-thumbnail">
+          <div class="video-thumb-placeholder" style="font-size:3rem;color:var(--border);">🔮</div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">5h 00m</div>
+          <div class="video-level level-advanced">Advanced</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Advanced Mentalism Techniques</div>
+          <div class="video-desc">5 hours of professional mentalism secrets — cold reading, billet work, psychological forces, and full performance routines.</div>
+          <div class="video-meta">
+            <span>📹 HD Video</span>
+            <span>⬇️ Instant Download</span>
+            <span>🧠 20+ Routines</span>
+          </div>
+          <div class="video-footer">
+            <div class="video-price">$59.99</div>
+            <button class="btn btn-primary" onclick="buyVideo('v04','Advanced Mentalism Techniques','59.99')">Buy &amp; Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="video-card reveal reveal-delay-1" data-level="intermediate">
+        <div class="video-thumbnail">
+          <div class="video-thumb-placeholder" style="font-size:3rem;color:var(--border);">🤏</div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">3h 20m</div>
+          <div class="video-level level-intermediate">Intermediate</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Close-Up Magic Secrets</div>
+          <div class="video-desc">Cocktail party magic at its finest. Learn to amaze small groups with borrowed objects, cards, and impromptu mentalism.</div>
+          <div class="video-meta">
+            <span>📹 HD Video</span>
+            <span>⬇️ Instant Download</span>
+            <span>✨ 16 Effects</span>
+          </div>
+          <div class="video-footer">
+            <div class="video-price">$34.99</div>
+            <button class="btn btn-primary" onclick="buyVideo('v05','Close-Up Magic Secrets','34.99')">Buy &amp; Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="video-card reveal reveal-delay-2" data-level="all">
+        <div class="video-thumbnail">
+          <div class="video-thumb-placeholder" style="font-size:3rem;color:var(--border);">🎤</div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">2h 00m</div>
+          <div class="video-level level-all">All Levels</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Stage Presence &amp; Performance</div>
+          <div class="video-desc">The secret weapon of every great performer. Learn to command attention, build tension, control crowds, and own any stage.</div>
+          <div class="video-meta">
+            <span>📹 HD Video</span>
+            <span>⬇️ Instant Download</span>
+            <span>🎭 Performance Theory</span>
+          </div>
+          <div class="video-footer">
+            <div class="video-price">$29.99</div>
+            <button class="btn btn-primary" onclick="buyVideo('v06','Stage Presence & Performance','29.99')">Buy &amp; Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="video-card reveal" data-level="intermediate">
+        <div class="video-thumbnail">
+          <div class="video-thumb-placeholder" style="font-size:3rem;color:var(--border);">🃏</div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">3h 45m</div>
+          <div class="video-level level-intermediate">Intermediate</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Card Flourishes &amp; Cardistry</div>
+          <div class="video-desc">Elevate your visual presence with stunning card flourishes — fans, cuts, aerials, and display techniques that captivate before a single trick begins.</div>
+          <div class="video-meta">
+            <span>📹 HD Video</span>
+            <span>⬇️ Instant Download</span>
+            <span>🃏 25 Flourishes</span>
+          </div>
+          <div class="video-footer">
+            <div class="video-price">$44.99</div>
+            <button class="btn btn-primary" onclick="buyVideo('v07','Card Flourishes & Cardistry','44.99')">Buy &amp; Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="video-card reveal reveal-delay-1" data-level="beginner">
+        <div class="video-thumbnail">
+          <div class="video-thumb-placeholder" style="font-size:3rem;color:var(--border);">🪢</div>
+          <div class="play-btn">▶</div>
+          <div class="video-duration">1h 30m</div>
+          <div class="video-level level-beginner">Beginner</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Rope Magic Complete Guide</div>
+          <div class="video-desc">The definitive beginner's guide to rope magic — knots, penetrations, cut-and-restored, and full parlor routines that pack small and play big.</div>
+          <div class="video-meta">
+            <span>📹 HD Video</span>
+            <span>⬇️ Instant Download</span>
+            <span>🪢 10 Routines</span>
+          </div>
+          <div class="video-footer">
+            <div class="video-price">$22.99</div>
+            <button class="btn btn-primary" onclick="buyVideo('v08','Rope Magic Complete Guide','22.99')">Buy &amp; Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- UPLOAD PLACEHOLDER SLOT -->
+      <div class="upload-notice reveal reveal-delay-2" style="grid-column: span 1;">
+        <h3>🎬 &nbsp;More Coming Soon</h3>
+        <p>New courses are added regularly. Check back for fresh content or <a href="contact.html" style="color:var(--gold);">subscribe to be notified</a> when new tutorials drop.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ TESTIMONIALS ══════ -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Students Say</h2>
+    <div class="gold-ornament reveal"><span>✦ ✦ ✦</span></div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">The Street Magic Masterclass was life-changing. I went from hobbyist to performing at paid events within four months. The performance theory section alone is worth the entire price.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DL</div>
+          <div>
+            <div class="author-name">Daniel L.</div>
+            <div class="author-role">Amateur Magician, Phoenix AZ</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">I've bought countless magic DVDs and downloads over the years. This mentalism course is the most thorough and practical I have ever seen. Worth every penny and more.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PW</div>
+          <div>
+            <div class="author-name">Paul W.</div>
+            <div class="author-role">Semi-Professional Mentalist, NYC</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">As a complete beginner, the Card Fundamentals course was perfect. Clear, patient, detailed. I was performing for friends at dinner parties within two weeks of starting.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">LM</div>
+          <div>
+            <div class="author-name">Lisa M.</div>
+            <div class="author-role">Beginner · Los Angeles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CTA ══════ -->
+<section class="cta-banner">
+  <div class="section-inner">
+    <h2 class="reveal">Ready to Learn the Secrets?</h2>
+    <p class="reveal">Every master was once a beginner. Start your journey today.</p>
+    <div class="reveal" style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="btn btn-primary">Browse All Courses ✦</a>
+      <a href="shop.html" class="btn btn-outline">Visit Magic Shop →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">Rodrigo Montes <span>Magic</span></a>
+        <p>Professional magic education from a working Los Angeles magician.</p>
+        <div class="social-links">
+          <a class="social-link" href="#">📸</a>
+          <a class="social-link" href="#">▶</a>
+          <a class="social-link" href="#">📘</a>
+          <a class="social-link" href="#">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Courses</h4>
+        <ul>
+          <li><a href="learn.html">All Courses</a></li>
+          <li><a href="learn.html">Beginner</a></li>
+          <li><a href="learn.html">Intermediate</a></li>
+          <li><a href="learn.html">Advanced</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">Magic Shop</a></li>
+          <li><a href="shop.html">Cards &amp; Decks</a></li>
+          <li><a href="shop.html">Mentalism</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="events.html">Book an Event</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Download Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 Rodrigo Montes Magic. Los Angeles, California.</div>
+      <div style="color:var(--text-muted);font-size:0.8rem;">♠ ♥ ♦ ♣</div>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-overlay"></div>
+<div class="cart-sidebar">
+  <div class="cart-header"><h3>Your Cart</h3><button class="cart-close">✕</button></div>
+  <div class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span class="cart-total-price">$0.00</span></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;">Proceed to Checkout</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
