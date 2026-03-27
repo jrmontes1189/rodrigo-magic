@@ -629,13 +629,8 @@ h1, h2, h3, h4, h5 {
   object-position: center center;
 }
 
-.photo-strip-item:nth-child(2) {
-  background: #0a0a0a;
-}
-
 .photo-strip-item:nth-child(2) img {
-  object-fit: contain;
-  object-position: center center;
+  object-position: center 20%;
 }
 
 .photo-strip-item:hover img {
