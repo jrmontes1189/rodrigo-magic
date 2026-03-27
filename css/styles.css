@@ -714,7 +714,7 @@ h1, h2, h3, h4, h5 {
 .service-card:hover { background: var(--bg-card-hover); }
 .service-card:hover::before { transform: scaleY(1); }
 
-.service-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+.service-icon { font-size: 1.8rem; margin-bottom: 1.2rem; color: var(--gold); }
 
 .service-card h3 {
   font-family: 'Oswald', sans-serif;
