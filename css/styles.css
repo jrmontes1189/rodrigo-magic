@@ -625,6 +625,10 @@ h1, h2, h3, h4, h5 {
   transition: var(--transition-slow);
 }
 
+.photo-strip-item:first-child img {
+  object-position: center center;
+}
+
 .photo-strip-item:hover img {
   filter: saturate(0.7) contrast(1.05) brightness(0.9);
   transform: scale(1.04);
